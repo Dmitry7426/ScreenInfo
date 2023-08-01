@@ -1,0 +1,167 @@
+* {
+    font-style: italic;
+}
+
+.curr {
+    color: blue;
+    margin-left: 25%;
+    padding: 1%;
+    font-style: italic;
+    font-size: 115%;
+}
+
+.backgr {
+    background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('../image/wallpaper.jpg');
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+
+.mytable {
+    align-content: top;
+    align-items: top;
+    vertical-align: top;
+    justify-content: center;
+    font-size: 0.85em;
+    overflow: hidden;
+    display: flexbox;
+    height: 80%;
+    width: auto;
+    border-collapse: collapse;
+}
+
+.test {
+    background: green;
+}
+
+table {
+    margin: 0 auto;    
+    border: green 2px solid;
+    border-collapse: collapse;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+td, th, tr {
+    vertical-align: top;       
+    align-content: top;
+    align-items: top;
+    justify-content: top;
+    color: rgb(0, 0, 87);
+    border: green 2px solid;
+    border-collapse: collapse;
+}
+
+.style_table {
+    border: 2px solid green; 
+    border-collapse: collapse;
+}
+
+a {
+    color: rgb(201, 2, 2);
+    font-size: 1.5em;
+    font-style:inherit;
+    font-weight:bolder ;
+}
+
+.borders {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-bottom: 0.2em rgb(148, 0, 0) solid;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.risk_up {
+    border-radius: 0.5em;
+    background: yellow;
+    animation: shadow 2s infinite ease-in-out;
+    border: red 1px solid;
+    font-style: inherit;
+}
+
+.risk_down {
+    border-radius: 0.5em;
+    background: rgb(0, 217, 255);
+    border: black 1px solid;
+    font-style: inherit;
+}
+
+.total {
+    display: flex;
+    width: 5em;
+    height: 5em;
+    font-size: 3em;
+    overflow: hidden;
+    margin: 0 auto;
+    color: red;
+    background-size:contain;
+    animation: totals 5s linear forwards;
+    border: 0.1em brown solid;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullpage {
+    color: blue;
+}
+
+.totals {
+    display: flex;
+    border: 1px black solid;
+    height: 7.2em;
+    width: 22.2em;
+    background-image: url('../image/');
+    background-size: cover;
+    justify-content: center;
+    vertical-align: bottom;
+    margin: 0 auto;
+}
+
+@keyframes shadow {
+    from {background: rgb(255, 255, 156);}
+    50% {background: yellow; }
+    to {background: rgb(255, 255, 156); }
+    }
+
+@media  (max-width: 800px) {
+    .mytable {
+    margin: 0 auto;    
+    color: red;
+    font-size: 0.46em;
+    width: auto;
+    height: auto;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    }
+    .curr {
+        font-size: 0.47em;
+    }
+}    
+
+@media  (min-width: 1200px) {
+    .mytable {
+    line-height: 1;
+    margin: 0 auto;    
+    color: red;
+    font-size: 1.2em;
+    width: auto;
+    height: auto;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    }
+    .curr {
+        font-size: 1.2em;
+    }
+    }
+    .tr, td, th {
+        padding: 10px;
+    }
+ 
