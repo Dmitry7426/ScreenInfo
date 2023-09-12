@@ -1,6 +1,10 @@
 * {
-    font-style: bold;
+/*    font-style: 900;	
+    font-weight: normal; */
+    font-family: Arial;	
 }
+
+
 
 .status {
     display: flex;
@@ -17,9 +21,12 @@
 
 .alg {
     display: flex;
+    
     padding-left: 1em;
     padding-right: 1em;
     justify-content: space-between;
+    font-weight: 900;	
+
 }
 
 
@@ -53,7 +60,7 @@
     color: blue;
     margin-left: 25%;
     padding: 1%;
-    font-style: italic;
+    font-style: bold;
     font-size: 115%;
 }
 
@@ -64,13 +71,17 @@
     height: auto;
 }
 
+.oxr {
+    color: green;
+}
 
 
 a {
-    color: rgb(201, 2, 2);
+    
     font-size: 1.5em;
     font-style:inherit;
-    font-weight:bolder ;
+    
+    font-weight: normal;
     margin-left: 1em;	
 }
 
@@ -100,7 +111,8 @@ a {
 
 .risk_up {
     border-radius: 0.5em;
-    background: yellow;
+    background: black;
+    color: yellow;
     animation: shadow 2s infinite ease-in-out;
     border: red 1px solid;
     font-style: inherit;
@@ -109,12 +121,14 @@ a {
     margin: 5px;
     padding-left: 15px;
     padding-right: 15px;	
-
+    img[hidden]
 }
 
 .risk_down {
     border-radius: 0.5em;
-    background: rgb(0, 217, 255);
+    
+    background: black;
+    color: yellow;
     border: black 1px solid;
     font-style: inherit;
     align-items: center;
@@ -145,6 +159,7 @@ a {
     color: blue;
 }
 
+
 .totals {
     display: flex;
     border: 1px black solid;
@@ -156,7 +171,7 @@ a {
     vertical-align: bottom;
     margin: 0 auto;
 }
-
+/*
 @keyframes shadow {
     from {background: rgb(255, 255, 156);}
     50% {background: yellow; }
@@ -198,4 +213,4 @@ a {
     .tr, td, th {
         padding: 10px;
     }
- 
+ */

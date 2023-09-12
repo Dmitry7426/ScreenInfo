@@ -36,7 +36,7 @@ function Creat_Data_Html
 
         # Стилизация отображения тэгов
 
-        $st_risk = "<img src='c:\ScreenInfo\image\arrow.png' width='20' height='10' alt='Иллюстрация'>"
+        $st_risk = "<img hidden src='c:\ScreenInfo\image\arrow.png' width='20' height='10' alt='Иллюстрация'>"
         $sm_count = 0
 
         #  Переборка смен и людей в смене
@@ -73,7 +73,7 @@ function Creat_Data_Html
 
                 if ($ExcelWorkSheet.Cells[("F$a")].Value -ne 0) 
                     {
-                        $guests += "<div class=alg><a>" + @($ExcelWorkSheet.Cells[("E$a")].Value + " - " + $ExcelWorkSheet.Cells[("F$a")].Value + "</a></div>")
+                        $guests += "<div class='alg oxr'><a>" + @($ExcelWorkSheet.Cells[("E$a")].Value) + "</a>" + "<a>" + @($ExcelWorkSheet.Cells[("F$a")].Value) + "</a></div>"
                     }
                 else 
                     {
@@ -82,7 +82,7 @@ function Creat_Data_Html
 
         # Переборка Охрана/сервсис
       
-              $oxr += "<div class=alg><a>" + @($ExcelWorkSheet.Cells[("g$a")].Value + "</a></div>")  
+              $oxr += "<div class='alg oxr'><a>" + @($ExcelWorkSheet.Cells[("g$a")].Value + "</a></div>")  
             }
 
         # Переборка Рисков
