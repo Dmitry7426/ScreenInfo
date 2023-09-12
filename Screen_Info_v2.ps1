@@ -3,7 +3,7 @@
 
 # Опрос файла инициализации и формирование словаря, временного файла
 
-$slovar = @(Get-Content -Path c:\ScreenInfo\screeninfo\conf.ini)
+$slovar = @(Get-Content -Path c:\ScreenInfo\conf.ini)
 $f0,$dir_patch  = $slovar[0].split('>')
 $f1,$name_in_file  = $slovar[1].split('>')
 $f2,$name_out_file  = $slovar[2].split('>')
@@ -32,6 +32,7 @@ function Creat_Data_Html
         $total_smena = $ExcelWorkSheet.Cells[("B49")].Value
         $total_office = $ExcelWorkSheet.Cells[("D49")].Value
         $total_guest = $ExcelWorkSheet.Cells[("F49")].Value
+        $total_service = $ExcelWorkSheet.Cells[("G49")].Value
 
         # Стилизация отображения тэгов
 
@@ -44,8 +45,8 @@ function Creat_Data_Html
             {
                 if ($ExcelWorkSheet.Cells[("A$a")].Value -gt 0) 
                     {
-                        $sm_fio += @($ExcelWorkSheet.Cells[("A$a")].Value) + "<br>"
-                        $sm_stat += @($ExcelWorkSheet.Cells[("B$a")].Value) + "<br>"
+                        $sm_fio += "<div class=alg><a>" + @($ExcelWorkSheet.Cells[("A$a")].Value) + "</a>" + "<a>" + @($ExcelWorkSheet.Cells[("B$a")].Value) + "</a></div>"
+                        $sm_stat += "<a>" + @($ExcelWorkSheet.Cells[("B$a")].Value) + "</a>"
                         $sm_count += 1       
                     }
                 else 
@@ -58,8 +59,8 @@ function Creat_Data_Html
       
                 if ($ExcelWorkSheet.Cells[("C$a")].Value -gt 0) 
                     {
-                        $of_fio += @($ExcelWorkSheet.Cells[("C$a")].Value) + "<br>"
-                        $of_stat += @($ExcelWorkSheet.Cells[("D$a")].Value) + "<br>"     
+                        $of_fio += "<div class=alg><a>" + @($ExcelWorkSheet.Cells[("C$a")].Value) + "</a>" + "<a>" + @($ExcelWorkSheet.Cells[("D$a")].Value) + "</a></div>"
+                        $of_stat += "<a class='status_office'>" + @($ExcelWorkSheet.Cells[("D$a")].Value) + "</a>"     
                         $of_count += 1
                     }
                 else 
@@ -72,7 +73,7 @@ function Creat_Data_Html
 
                 if ($ExcelWorkSheet.Cells[("F$a")].Value -ne 0) 
                     {
-                        $guests += @($ExcelWorkSheet.Cells[("E$a")].Value + " - " + $ExcelWorkSheet.Cells[("F$a")].Value + "<br>")
+                        $guests += "<div class=alg><a>" + @($ExcelWorkSheet.Cells[("E$a")].Value + " - " + $ExcelWorkSheet.Cells[("F$a")].Value + "</a></div>")
                     }
                 else 
                     {
@@ -81,7 +82,7 @@ function Creat_Data_Html
 
         # Переборка Охрана/сервсис
       
-              $oxr += @($ExcelWorkSheet.Cells[("g$a")].Value + "<br>")  
+              $oxr += "<div class=alg><a>" + @($ExcelWorkSheet.Cells[("g$a")].Value + "</a></div>")  
             }
 
         # Переборка Рисков
@@ -118,26 +119,40 @@ function Creat_Data_Html
                 <title>Informations Screen</title>
             </head>
             <body>
-                <div class='backgr'>
-                    <div id='curr' class='curr'></div>          
-                    <div class='mytable'>
-                        <table> 
-                            <tr>
-                                <th>Фамилия</th>
-                                <th>Статус</th>
-                                <th>Фамилия</th>
-                                <th>Статус</th>
-                                <th>К кому - кол-во</th>
-                                <th>Охрана/Сервис</th>
-                            </tr>
-                            <tr>
-                                <td>$sm_fio  </td>
-                                <td class='status'>$sm_stat </td>
-                                <td>$of_fio</td>
-                                <td class='status'>$of_stat</td>
-                                <td>$guests</td>
-                                <td>$oxr</td>
-                                <td class='riski'>
+                        <div id='curr' class='curr'></div>
+                         <div class='status'>
+                            <div class='st1'>
+                                <div class=alg><h2>Фамилия</h2><h2>Статус</h2></div>
+                                $sm_fio
+                                <a class='total_ch'>Всего: $total_smena</a>
+                            </div>
+
+                            
+
+                            <div class='st1'>
+                                <div class=alg><h2>Фамилия</h2><h2>Статус</h2></div>
+                                $of_fio
+                                <a class='total_ch'>Всего: $total_office</a>
+                            </div>
+                         
+                            
+                                
+                            
+                         
+                            <div class='st1'>
+                                <div class=alg><h2>К кому</h2><h2>Кол-во</h2></div>
+                                $guests
+                                <a class='total_ch'>Всего: $total_guest</a>
+
+                            </div>
+                         
+                            <div class='st1'>
+                                <div class=alg><h2>Охрана/Сервис</h2></div>
+                                $oxr
+                                <a class='total_ch'>Всего: $total_service</a>
+                            </div>
+
+                                <div class='riski'>
                                     <a class='borders'>Повышенный риск</a>
                                     <div>
                                         $sm_risk
@@ -145,26 +160,28 @@ function Creat_Data_Html
                                     </div>
                                     <br>
                                     <a class='borders'>Возможные риски</a>
-                                    <p class='risk_down'>$sm_risk_style</p>
+                                    <div>
+                                        $sm_risk_style
+                                    </div>
+
                                     <br>
                                     <a class='borders'>Всего на предприятии</a> 
                                     <br>
                                     <div class='total'>
-                                        <a>$peoples</a>
+                                        <h1>$peoples</h1>
                                     </div>
                                     <br>
                                     <div class='totals'></div>
-                                </td>
-                            </tr>
-                            <td>Всего: $total_smena</td>
-                            <td></td>
-                            <td>Всего: $total_office</td>
-                            <td></td>
-                            <td>Всего: $total_guest</td>
-                            <td></td>
+                               
+                            
+                            <a></a>
+                            
+                            <a></a>
+                            
+                            <a></a>
 
-                        </table>
-                    </div>
+                      
+                    
                 </div>
             </body>
             </html>"
@@ -194,7 +211,7 @@ function G_My
         Write-Host $Len2.LastWriteTime
         if ($Len.LastWriteTime -ne $Len2.LastWriteTime) 
             {
-                Creat-Data-Html
+                Creat_Data_Html
                 Write-Host "Source file modify! Refresh HTML page!"
                 $Len = $Len2       
                 Copy-Item -Path $TempFile -Destination $FullPatchOut 
